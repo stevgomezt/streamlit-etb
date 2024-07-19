@@ -1085,9 +1085,11 @@ class Modelos_2():
             values = df_group['Cantidad']*100
 
             if paleta == 1:
-                colors = ['#162055', '#0076BA', '#79B4D9', '#DDF2FD', '#0378A6']
+                colors = ['#162055', '#0076BA',
+                          '#79B4D9', '#DDF2FD', '#0378A6']
             elif paleta == 2:
-                colors = ['#162055', '#0076BA', '#79B4D9', '#DDF2FD', '#0378A6']
+                colors = ['#162055', '#0076BA',
+                          '#79B4D9', '#DDF2FD', '#0378A6']
 
             colors = colors[:len(df_group)]
 
