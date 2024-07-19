@@ -1,0 +1,40 @@
+** CREDENCIALES ** -------------------------------------------------------------------------------------
+
+Nombre:     Enel
+Apellido:   Pruebas
+Correo:     Pruebasappenel@gmail.com
+Contraseña: Pruebasappenel2023
+Fecha nac:  01/01/2000
+
+** MIGRAR IMAGEN DE DOCKER LOCAL a GCP ARTIFACT REGISTRY ** -----------------------------------------------
+
+** En VSC: **
+
+1. Crear imagen Docker: 
+    
+    docker build -t sbseguros:sbs1 .
+    
+2. Autenticar docker en gcloud
+    
+    *gcloud auth configure-docker <region>-<dominio>*
+    
+    **gcloud auth configure-docker us-central1-docker.pkg.dev**
+    
+3. Etiquetar imagen a subir: 
+    
+    *docker tag <ID de la imagen> <directorio del repo en art’reg’>/<nombreimagen>  :<tag>*
+    
+    **docker tag 88e9e234a104 us-central1-docker.pkg.dev/enel-x-388415/repodocker/enelx_img**
+    
+4. Subir imagen a GCP Artifact Registry: 
+    
+    *docker push <directorio del repo en art’reg’>/<nombreimagen>  :<tag>*
+    
+    **docker push us-central1-docker.pkg.dev/enel-x-388415/repodocker/enelx_img**
+    
+5. Una vez cargada la imagen:
+    - Click en los tres puntos de la imagen y click en implementar con Cloud Run
+     habilitando la API de Cloud Run Admin.
+    - Configurar… (importante el PUERTO: Debe ser el mismo estipulado en el archivo Dockerfile)
+    - Crear
+# -----------------------------------------------------------------------------------------------------

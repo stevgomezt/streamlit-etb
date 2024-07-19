@@ -1,0 +1,36 @@
+1.	Crear imagen de docker
+2.	Crear archivo Dockerfile
+3.	Tener instalado y abierto docker
+4.	Crar imagen de docker : desde consola ejecutar : docker build -t etb:sbspro4 .
+5.	Instalar GoogleCloudSDKInstaller
+6.	Probar imagen de docker http://localhost:8082/
+7.	Comando gcloud init, autentificarse en google cloud
+    Autenticar docker en gcloud 
+    Set-ExecutionPolicy RemoteSigned 
+    gcloud auth configure-docker us-central1-docker.pkg.dev
+
+8.  Crear proyecto en google cloud
+    Artifact Registry API / probar / habilitar
+    Crear repositorio region : us-central1
+    Entrar al repo y copiar directorio (sinmbolo de copiar parte superior rutas carpetas)
+    docker tag <ID de la imagen> <directorio del repo en art’reg’>/<nombreimagen>  :<tag>
+
+    docker tag 1b91c4273e51 us-central1-docker.pkg.dev/sbsegurosprod/sbsegurosprod/sbs/etb:sbspro4
+    docker push us-central1-docker.pkg.dev/sbsegurosprod/sbsegurosprod/sbs/etb:sbspro4
+
+
+    el nombre de la imagen debe ser distinto al nombre del repositorio
+
+    En la plataforma GCP buscar la imagen cargada
+    Click en los tres puntos de la imagen y click en implementar con Cloud Run
+    Habilitar la API de Cloud Run Admin.
+
+    Contenedores y volumenes
+    Usar mismo puerto de archivo Dockerfile 8082
+    Tiempo de espera 1500 = 15min
+    Crear
+    
+    Id de imagen lo da docker, 
+    artifact Register/
+
+    

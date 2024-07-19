@@ -1,0 +1,16 @@
+16:19:04 18/07/2024 - En la columna CLIENTES_CON_PRODUCTO se encontraron 7 registros con campos vacios en las filas: 17,18,19,20,21,22,23.
+ 
+16:19:04 18/07/2024 - En la columna FRECUENCIA_DE_CONTACTO se encontraron 4 registros con campos vacios en las filas: 10,11,12,13.
+ 
+16:19:04 18/07/2024 - En la columna NIVEL_EDUCATIVO se encontraron 5 registros con campos vacios en las filas: 1,2,3,4,5.
+ 
+16:19:04 18/07/2024 - En la columna SITUACION_LABORAL se encontraron 5 registros con campos vacios en las filas: 24,25,26,27,28.
+ 
+16:19:04 18/07/2024 - En la columna FECHA_NACIMIENTO se encontraron 7 registros con campos vacios en las filas: 16,17,18,19,20,21,22.
+ 
+16:19:04 18/07/2024 - En la columna CIUDAD se encontraron 14 registros con campos vacios en las filas: 12,13,14,15,16,17,18,19,20,21,22,23,24,25.
+ 
+16:19:04 18/07/2024 - En la columna DEPARTAMENTO se encontraron 14 registros con campos vacios en las filas: 15,16,17,18,19,20,21,22,23,24,25,26,27,28.
+ 
+16:19:05 18/07/2024 - En la columna FRECUENCIA_DE_CONTACTO se encontraron 2 registros con categorias no esperadas: BOGGTA, BOLIVVAR en las filas 6, 7
+ 

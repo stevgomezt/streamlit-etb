@@ -1,0 +1,4 @@
+Texto Original					Texto Corregido
+Cancer							Cáncer
+Seguros por kilometro			Seguros por kilómetro
+Hogar express					Hogar exprés				
