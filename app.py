@@ -36,6 +36,7 @@ app = Flask(__name__)
 
 # -----------------------------------------------------
 
+
 @app.route('/')
 def index() -> str:
     return """
@@ -548,7 +549,7 @@ def scatter_plot(df, col=None):
 def main():
 
     # Configura titulo e icon de pagina
-    st.set_page_config(page_title="2024 © ETB S.A. ESP. Todos los derechos reservados. Música Autorizada Por Acinpro.",
+    st.set_page_config(page_title="Demostración de EMERGIA para ETB",
                        page_icon="img/Icono.png", layout="wide")
 
     # Leer el contenido del archivo CSS
@@ -576,8 +577,15 @@ def main():
     """, unsafe_allow_html=True)
 
     # Imagen centrada en la barra lateral con tamaño de 150px
-    st.sidebar.image("img/logo.png", width=180, output_format="PNG",
-                     caption='2024 © ETB S.A. ESP. Todos los derechos reservados. Música Autorizada Por Acinpro.')
+    st.sidebar.image("img/logo.png", width=180, output_format="PNG")
+
+    # Texto en negrita, más grande, con margen inferior y color blanco
+    st.sidebar.markdown(
+        '<div style="text-align: center; font-size: 20px; font-weight: bold; color: white; margin-bottom: 15px;">'
+        'Demostración del Modelo Predictivo'
+        '</div>',
+        unsafe_allow_html=True
+    )
 
     st.markdown(
         """
@@ -586,16 +594,16 @@ def main():
         </head>
 
         <div style="display: flex; justify-content: center;">
-            <a href="https://co.linkedin.com/company/mundial-seguros-s-a-" style="color: #0057b8; margin: 0 30px;">
+            <a href="https://www.linkedin.com/company/etb/?originalSubdomain=co" style="color: #0057b8; margin: 0 30px;">
                 <i class="fab fa-linkedin" style="font-size: 30px;"></i>
             </a>
-            <a href="https://www.instagram.com/segurosmundial/?hl=es" style="color: #0057b8; margin: 0 30px;">
+            <a href="https://www.instagram.com/etb_oficial/" style="color: #0057b8; margin: 0 30px;">
                 <i class="fab fa-instagram" style="font-size: 30px;"></i>
             </a>
-            <a href="https://www.facebook.com/segurosmundial/?locale=es_LA" style="color: #0057b8; margin: 0 30px;">
+            <a href="https://www.facebook.com/ETB.Colombia/" style="color: #0057b8; margin: 0 30px;">
                 <i class="fab fa-facebook" style="font-size: 30px;"></i>
             </a>
-            <a href="https://twitter.com/SegurosMundial" style="color: #0057b8; margin: 0 30px;">
+            <a href="https://x.com/ETB?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" style="color: #0057b8; margin: 0 30px;">
                 <i class="fab fa-twitter" style="font-size: 30px;"></i>
             </a>
         </div>
@@ -864,8 +872,10 @@ def main():
                                 'Valor_probabilidad5',	'Producto_6',	'Probabilidad_6',	'Valor_probabilidad6',	'Producto_7',
                                 'Probabilidad_7',	'Valor_probabilidad7',	'Producto_8',	'Probabilidad_8',	'Valor_probabilidad8']]
 
-                dic1 = ['INSTALACIONES', 'MANTENIMIENTO', 'ESTUDIOS', 'AUMENTOS_CARGA', 'FIBRA_OPTICA', 'REDESELECTRICAS', 'ILUMINACION', 'CUENTASNUEVAS']
-                dic2 = ['Disfruta Tranquilo', 'Vida', 'Desempleo', 'Responsabilidad Civil Familiar', 'AP Segurísimo', 'Cyber Esencial', 'SOAT', 'Arriendos']
+                dic1 = ['INSTALACIONES', 'MANTENIMIENTO', 'ESTUDIOS', 'AUMENTOS_CARGA',
+                        'FIBRA_OPTICA', 'REDESELECTRICAS', 'ILUMINACION', 'CUENTASNUEVAS']
+                dic2 = ['Disfruta Tranquilo', 'Vida', 'Desempleo', 'Responsabilidad Civil Familiar',
+                        'AP Segurísimo', 'Cyber Esencial', 'SOAT', 'Arriendos']
                 Xf = Xf.replace(dict(zip(dic1, dic2)))
                 download_excel(Xf, 'Resultado', col=col2_container1)
 
@@ -877,7 +887,7 @@ def main():
                 # dona('ESTUDIOS',0 , 2, 'c')
                 dona_plotly(df_prob_prod=df_prob_prod, producto='ESTUDIOS',
                             titulo='Vida', col=col1_container2)
-                
+
                 # ######## Mantenimiento
                 # dona('MANTENIMIENTO',0 , 1, 'Mantenimiento')
                 dona_plotly(df_prob_prod=df_prob_prod, producto='MANTENIMIENTO',
@@ -902,13 +912,11 @@ def main():
                 # dona('ILUMINACION',1 , 2, 'Iluminación')
                 dona_plotly(df_prob_prod=df_prob_prod, producto='ILUMINACION',
                             titulo='SOAT', col=col1_container2)
-                
+
                 # #REDESELECTRICAS
                 # dona('REDESELECTRICAS',1 , 1, 'Redes eléctricas')
                 dona_plotly(df_prob_prod=df_prob_prod, producto='REDESELECTRICAS',
                             titulo='Arriendos', col=col2_container2)
-
-
 
             except UnboundLocalError:
                 st.warning(
@@ -971,7 +979,8 @@ def main():
                             'x_axis_title': 'Cantidad de clientes',
                             'y_axis': 'Tipo de cliente por numero de oportunidades',
                             'col': col2,
-                            'order': ['SINCATALOGAR', 'NICOMPRA-NICOTIZA', 'SOLOCOTIZAN', 'COTIZANMASDELOQUECOMPRAN','COMPRANYCOTIZAN', 'COMPRANMASDELOQUECOTIZAN', 'SIEMPRECOMPRAN'],  # Orden deseado de las categorías
+                            # Orden deseado de las categorías
+                            'order': ['SINCATALOGAR', 'NICOMPRA-NICOTIZA', 'SOLOCOTIZAN', 'COTIZANMASDELOQUECOMPRAN', 'COMPRANYCOTIZAN', 'COMPRANMASDELOQUECOTIZAN', 'SIEMPRECOMPRAN'],
                             'order_f': ['Sin catalogar', 'Entre 31 y 60 días', 'Entre 61 y 90 días', 'Entre 91 y 120 días',
                                         'Entre 121 y 150 días', 'Entre a 151 y 180 días', 'Mayores a 180 días'],
                         }]

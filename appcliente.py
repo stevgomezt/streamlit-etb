@@ -157,21 +157,6 @@ def download_excel(df_v,nombre='LogErrores'):
 #     st.markdown(download_button, unsafe_allow_html=True)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route('/', methods=['GET'])
 def say_hello():
     from flask import request
@@ -233,10 +218,6 @@ def generar_graficos(df_t, configuraciones,mayus=True):
                                     tooltip=[config['y_axis']+":N",'Cantidad:Q', 'Porcentaje:O'],
                                     text=alt.Text('Porcentaje:N')
                                 ).configure_mark(color='#311557').configure_view(fill="none").configure_axis(grid=False)
-
-
-                            
-
                             config['col'].altair_chart(bar, use_container_width=True, theme="streamlit")
                             st.write("")
 
@@ -274,8 +255,6 @@ def main():
         unsafe_allow_html=True )
 
 
-
-
     # Variable que controla la visibilidad de la imagen
     b=False
     vista0,vista1,vista2,vista3 = st.tabs(['Inicio',"Resultado múltiples clientes", "Reporte descriptivo", "Resultado modelo unitario"])
@@ -287,8 +266,6 @@ def main():
             # image = 'img/Entorno_enel.jpg'
             image = 'img/Ciudad_Enel.jpg'
             st.image(image)
-
-
 
 
     # st.image("img/Entorno_enel.jpg" ,use_column_width=True)#
@@ -309,8 +286,7 @@ def main():
 
     #a, b, c = False, False, False
 
-    
-     
+
     with st.sidebar.expander("MODELO MÚLTIPLES CLIENTES ", expanded = False):
 
         datos = st.file_uploader("Subir archivos: ", type = ["xlsx"])
@@ -335,8 +311,7 @@ def main():
                 download_excel(df_v)
             else:     
                 st.write(text)
-                b = st.button("Ejecutar Modelo",type="primary")
-                
+                b = st.button("Ejecutar Modelo",type="primary")                
 
 
     with st.sidebar.expander("MODELO UNITARIO ", expanded = False):
@@ -487,7 +462,6 @@ def main():
                     merged_df = merged_df.merge(df_tmp2, left_index=True, right_index=True, how = 'outer')
                     merged_df = merged_df.merge(df_tmp3, left_index=True, right_index=True, how = 'outer')
 
-
                     merged_df = merged_df.fillna(0)
                     merged_df['Total'] =merged_df.sum(axis=1) 
                     df_prob_prod[prod] = merged_df['Total']
@@ -498,7 +472,6 @@ def main():
                      df_prob_prod['P_'+prod] = np.round(df_prob_prod[prod]/df_prob_prod[prod].sum() *100, 2) 
 
 
-                     
 ##############-------------------------------------------------
 
                 def dona_plotly(producto = 'INSTALACIONES', col = col111,titulo=None, tamano_pantalla=(275, 275)):
@@ -588,11 +561,8 @@ def main():
 ############## ----------------------
 
 
-
-
                 # st.write(Xf)
-                download_excel(Xf, 'Resultado')
-                
+                download_excel(Xf, 'Resultado')                
 
         
             except UnboundLocalError:
@@ -614,7 +584,6 @@ def main():
                     st.write("")
                     st.subheader("Rango de consumo")
                     col7,col8,col71 = st.columns(spec=[1,4,1]) 
-                   
                     configuraciones = [
                         {
                             'groupby': 'RANGOCONSUMO',
@@ -762,7 +731,6 @@ def main():
                     # bar= alt.Chart(source).mark_bar().encode(x='count()',y="CategoriaDepartamento:N").configure_mark(color='#311557')
                     # col0.altair_chart(bar,use_container_width=True,theme="streamlit")
                     # st.write("")
-
                     # Configuraciones de los gráficos
                     configuraciones = [
                         {
@@ -790,7 +758,6 @@ def main():
                                          color='OPORTUNIDADESVENDIDAS', size='OPORTUNIDADESCOTIZADAS($)',#'OPORTUNIDADESCOTIZADAS(#)',
                                           color_continuous_scale='matter_r'#'purples_r'
                                          )
-
                         # Personalizar el diseño del gráfico
                         # fig.update_traces(marker=dict(line=dict(width=1, color='DarkSlateGrey')),  # Ancho y color del borde de los marcadores
                         #                 selector=dict(mode='markers'))  # Selector para aplicar el estilo solo a los 
@@ -802,8 +769,6 @@ def main():
                         # fig.update_layout(coloraxis_colorbar=dict(
                         #     title='Oportunidades cotizadas',
                         #     colorscale='Viridis'  # Cambiar la paleta de colores aquí
-    
-
 
                         # Mostrar el gráfico en Streamlit
                         st.plotly_chart(fig)
@@ -832,7 +797,7 @@ def main():
             except UnboundLocalError:
                 st.warning('No ha cargado un archivo para procesar!. En el menú de la izquierda cargar archivo en la sección Modelo Múltiples Variables')
 
-               
+
     #         with vista3:
     #             if c == True:
     #                 #x_in = pd.read_excel('./Data_cla_1.xlsx',index_col=0)
